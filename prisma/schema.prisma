@@ -1,0 +1,15 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model ShortUrl {
+  id           Int    @id @default(autoincrement())
+  original_url String @db.LongText
+  shorten_url  String @db.VarChar(255)
+  @@map("table_shorturl")
+}
